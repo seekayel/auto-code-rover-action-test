@@ -1,0 +1,19 @@
+name: Run AutoCodeRover
+
+on:
+  workflow_dispatch:
+    inputs:
+      bug_id:
+        description: 'Bug ID to repair'
+        required: true
+        type: string
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run AutoCodeRover
+      uses: seekayel/auto-code-rover-action@v1
+      with:
+        bug_id: ${{ github.event.inputs.bug_id }}
